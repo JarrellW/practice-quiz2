@@ -1,29 +1,55 @@
 package com.zipcodewilmington.assessment2.part2;
 
-import java.util.List;
+import java.util.*;
 
 public class ListUtility {
-    public Boolean add(int i) {
-        return null;
+    private List<Integer> l = new ArrayList<>();
+
+    public Boolean add(Integer i) {
+        l.add(i);
+
+        return l.contains(i);
     }
 
     public Integer size() {
-        return null;
+        return l.size();
     }
 
     public List<Integer> getUnique() {
-        return null;
+        Set<Integer> u = new HashSet<>();
+        for (Integer numbers : l) {
+            u.add(numbers);
+        }
+        return new ArrayList<>(u);
     }
 
     public String join() {
-        return null;
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Integer integer : l) {
+            if (l.indexOf(integer) == 0) {
+                stringBuilder.append(integer);
+            } else {
+                stringBuilder.append(", " + integer);
+            }
+        }
+        String stringResult = stringBuilder.toString();
+        return stringResult;
     }
 
     public Integer mostCommon() {
-        return null;
+        Integer mostCommonValue = null;
+        Integer mostCommonNoOccurrences = Integer.MIN_VALUE;
+        for (Integer integer : l) {
+            Integer noOccurrences = Collections.frequency(l, integer);
+            if (noOccurrences > mostCommonNoOccurrences) {
+                mostCommonValue = integer;
+                mostCommonNoOccurrences = noOccurrences;
+            }
+        }return mostCommonValue;
     }
 
     public Boolean contains(Integer valueToAdd) {
-        return null;
+        return l.contains(valueToAdd);
     }
 }
