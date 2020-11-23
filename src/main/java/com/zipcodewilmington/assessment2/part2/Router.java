@@ -1,13 +1,18 @@
 package com.zipcodewilmington.assessment2.part2;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Router {
-    LinkedHashMap<String, String> map = new LinkedHashMap<>();
+    HashMap<String, String> map = new HashMap<>();
+    StringBuilder routerString = new StringBuilder();
+
 
     public void add(String path, String controller) {
         map.put(path, controller);
+        routerString.append(path);
+        routerString.append(controller).append("\n");
     }
 
     public Integer size() {
@@ -27,11 +32,6 @@ public class Router {
     }
 
     public String toString(){
-        StringBuilder routerString = new StringBuilder();
-
-        for(Map.Entry<String, String> entry : map.entrySet()){
-            routerString.append(entry.getKey()).append(entry.getValue()).append("\n");
-        }
         return routerString.toString();
     }
 }
